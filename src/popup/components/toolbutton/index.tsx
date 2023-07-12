@@ -8,11 +8,16 @@ import { classNames } from "@/utils/helpers/css";
 export default function ToolButton({
   icon,
   label,
-  handler
+  handler,
+  transparent = false
 }: ToolButtonPropsType) {
   return (
     <button 
-      className={classNames(styles.toolBtn, icon && !label ? styles.icon : styles.normal)} 
+      className={classNames(
+        styles.toolBtn, 
+        icon && !label ? styles.icon : styles.normal,
+        transparent && styles.transparent
+      )} 
       onClick={handler}
     >
       {icon && <FontAwesomeIcon icon={icon} />}

@@ -9,19 +9,11 @@ import Toolbar from "@/popup/components/toolbar";
 import Description from "@/popup/components/description";
 import Details from "@/popup/components/details";
 import SearchBox from "@/popup/components/searchbox";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@/utils/constants/routes";
 
 export default function Home() {
-
-  const formRef = useRef(null);
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(formRef.current);
-  }
-
-  const handleAddRecipe = () => {
-
-  }
+  
 
   return (
     <div className={styles.container}>

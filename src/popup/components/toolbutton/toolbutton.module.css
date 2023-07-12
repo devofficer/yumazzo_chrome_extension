@@ -26,6 +26,10 @@
   border-radius: 100%;
 }
 
+.transparent {
+  background-color: transparent;
+}
+
 .toolBtn:hover {
   background-color: #252A3F;
 }
