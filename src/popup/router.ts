@@ -14,7 +14,7 @@ const routes: RouteObject[] = [
     children: [
       { path: ROUTES.splash, Component: Splash },
       { path: ROUTES.home, Component: Home },
-      { path: ROUTES.recipe, Component: Recipe }
+      { path: ROUTES.create, Component: Recipe }
     ],
   },
 ];

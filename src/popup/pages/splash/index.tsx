@@ -8,11 +8,11 @@ import { statusCode } from '@/utils/constants/statusCode';
 
 export default function Splash() {
   const navigate = useNavigate();
-  const recipes = useRecipes();
+  const store = useRecipes();
 
   useEffect(() => {
     (async () => {
-      const { status } = await recipes.loadAsync();
+      const { status } = await store.loadAsync();
       if(status === statusCode.SUCCESS)
         navigate('/home');
     })();

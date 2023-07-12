@@ -1,20 +1,21 @@
-import React from "react";
-import Flex from "../flex";
-import ToolButton from "../toolbutton";
-import CountryFlag from "../countryflag";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Flex from '../flex';
+import ToolButton from '../toolbutton';
+import CountryFlag from '../countryflag';
+import { useNavigate } from 'react-router-dom';
 
-import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
-import { faM } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faTelegram } from '@fortawesome/free-brands-svg-icons';
+import { faM } from '@fortawesome/free-solid-svg-icons';
 
-import styles from "./toolbar.module.css";
-import { ROUTES } from "@/utils/constants/routes";
+import styles from './toolbar.module.css';
+import { ROUTES } from '@/utils/constants/routes';
+import { ToolbarPropsType } from '@/utils/types/toolbar';
 
-export default function Toolbar() {
+export default function Toolbar({ recipe }: ToolbarPropsType) {
   const navigate = useNavigate();
   const handleAddRecipe = () => {
-    navigate(ROUTES.recipe);
-  }
+    navigate(ROUTES.create);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -23,8 +24,8 @@ export default function Toolbar() {
         alignItems="center"
       >
         <Flex gap={10} alignItems="center">
-          <CountryFlag countryCode="US"/>
-          <span className="country-label">Spanish Paella</span>
+          <CountryFlag countryCode={recipe.origin}/>
+          <span className="country-label">{recipe.name}</span>
         </Flex>
         
         <Flex gap={5} alignItems="center">
@@ -35,5 +36,5 @@ export default function Toolbar() {
         </Flex>
       </Flex>
     </div>
-  )
+  );
 }
