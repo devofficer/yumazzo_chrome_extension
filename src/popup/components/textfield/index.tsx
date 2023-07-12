@@ -22,6 +22,7 @@ export default function TextField({name, label, size = 'half', type = 'text', un
           id={name} 
           name={name} 
           type={type} 
+          maxLength={15}
           {...register(name, {
             required: {
               value: true,

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const API = {
   GET_RECIPES: '/yumazoo/recipes',
+  ADD_RECIPE: '/yumazoo/recipes'
 };
 
 const baseApi = axios.create({

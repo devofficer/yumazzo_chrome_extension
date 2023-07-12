@@ -1,34 +1,51 @@
-import TextField from '@/popup/components/textfield';
-import ToolButton from '@/popup/components/toolbutton';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '@/utils/constants/routes';
 import Button from '@/popup/components/button';
 import Flex from '@/popup/components/flex';
 import SelectBox from '@/popup/components/selectbox';
 import TextArea from '@/popup/components/textarea';
-
-import styles from './create.module.css';
+import TextField from '@/popup/components/textfield';
+import ToolButton from '@/popup/components/toolbutton';
+import { ROUTES } from '@/utils/constants/routes';
 import { authenticities, difficulties, origins } from '@/utils/mock';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import useRecipes from '@/popup/store/useRecipes';
+import styles from './create.module.css';
+import Loading from '@/popup/components/loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Recipe() {
+  const store = useRecipes();
   const navigate = useNavigate();
   const handleBack = () => {
     navigate(ROUTES.home);
   };
 
-
   const methods = useForm();
-
-  const onSubmit = methods.handleSubmit(data => {
-    console.log(data);
+  const onSubmit = methods.handleSubmit(async (data) => {
+    const response = await store.addRecipe(data);
+    console.log(response);
+    if(response.status === 201) {
+      toast.success('🦄 Recipe Creation Success', {
+        position: 'top-center',
+        autoClose: 5000,
+        theme: 'dark',
+      });
+    } else {
+      toast.error('🦄 Recipe Creation Failed', {
+        position: 'top-center',
+        autoClose: 5000,
+        theme: 'dark',
+      });
+    }
   });
 
-  
   return (
     <div className={styles.container}>
+      {store.loading && <Loading/>}
       <div className={styles.header}>
         <ToolButton transparent icon={faChevronLeft} handler={handleBack} />
         <span className={styles.title}>Add new recipe</span>
@@ -70,6 +87,15 @@ export default function Recipe() {
           </form>
         </FormProvider>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        theme="dark"
+      />
     </div>
   );
 }

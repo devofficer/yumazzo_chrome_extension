@@ -36,7 +36,6 @@ export default function SelectBox({name, label, size = 'half', type = 'text', it
           <input 
             className={styles.input} 
             type={type} 
-            readOnly 
             name={name} 
             value={value}
             {...rest}

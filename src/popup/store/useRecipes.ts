@@ -1,18 +1,22 @@
 import baseApi, { API } from '@/services/baseApi';
 import { RecipeType } from '@/utils/types/recipe';
+import { AxiosResponse } from 'axios';
 import { create } from 'zustand';
 
 interface RecipeSate {
+  loading: boolean;
   recipes: RecipeType[];
   filteredRecipes: RecipeType[];
   activeRecipe: RecipeType;
   filter: (keyword: string) => void;
   setActiveRecipe: (recipe: RecipeType) => void;
+  addRecipe: (recipe: RecipeType) => Promise<AxiosResponse>;
   loadAsync: () => Promise<{status: number}>;
 }
 
 const useRecipes = create<RecipeSate>((set) => {
   return {
+    loading: false,
     recipes: [],
     filteredRecipes: [],
     activeRecipe: {
@@ -40,6 +44,25 @@ const useRecipes = create<RecipeSate>((set) => {
       set({
         activeRecipe: recipe
       });
+    },
+    addRecipe: async (recipe: RecipeType) => {
+      set({loading: true});
+      try {
+        const response = await baseApi.post(API.ADD_RECIPE, recipe);
+        if(response.status === 201) {
+          set((state) => ({
+            recipes: [
+              ...state.recipes,
+              recipe
+            ],
+          }));
+        }
+        set({loading: false});
+        return response;
+      } catch(e) {
+        set({loading: false});
+        return e;   
+      }
     },
     loadAsync: async () => {
       const response = await baseApi.get(API.GET_RECIPES);
