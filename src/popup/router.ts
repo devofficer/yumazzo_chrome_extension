@@ -5,7 +5,7 @@ import { ROUTES } from '@/utils/constants/routes';
 import App from './App';
 import Home from './pages/home';
 import Splash from './pages/splash';
-import Recipe from './pages/recipe';
+import Recipe from './pages/create';
 
 const routes: RouteObject[] = [
   {

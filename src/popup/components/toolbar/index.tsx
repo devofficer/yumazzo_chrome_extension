@@ -10,6 +10,7 @@ import { faM } from '@fortawesome/free-solid-svg-icons';
 import styles from './toolbar.module.css';
 import { ROUTES } from '@/utils/constants/routes';
 import { ToolbarPropsType } from '@/utils/types/toolbar';
+import { classNames } from '@/utils/helpers/css';
 
 export default function Toolbar({ recipe }: ToolbarPropsType) {
   const navigate = useNavigate();
@@ -23,17 +24,19 @@ export default function Toolbar({ recipe }: ToolbarPropsType) {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Flex gap={10} alignItems="center">
+        <div className={styles.country}>
           <CountryFlag countryCode={recipe.origin}/>
-          <span className="country-label">{recipe.name}</span>
-        </Flex>
+          <span className={classNames('country-label', styles.label)}>{recipe.name}</span>
+        </div>
         
-        <Flex gap={5} alignItems="center">
-          <ToolButton icon={faTwitter} />
-          <ToolButton icon={faTelegram} />
-          <ToolButton icon={faM} />
-          <ToolButton label="+Add recipe" handler={handleAddRecipe} />
-        </Flex>
+        <div className={styles.tool}>
+          <Flex gap={5} alignItems="center">
+            <ToolButton icon={faTwitter} />
+            <ToolButton icon={faTelegram} />
+            <ToolButton icon={faM} />
+            <ToolButton label="+Add recipe" handler={handleAddRecipe} />
+          </Flex>
+        </div>
       </Flex>
     </div>
   );
