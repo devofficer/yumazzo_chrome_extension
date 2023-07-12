@@ -14,7 +14,7 @@ export default function TextField({name, label, size = "half", unit}: InputProps
     <div className={classNames(styles.wrapper, sizeStyles[size])}>
       <label htmlFor={name}>{label}</label>
       <div className={styles.container}>
-        <input name={name} type="text"/>
+        <input id={name} name={name} type="text"/>
         {unit && <span className={styles.unit}>{unit}</span>}
       </div>
     </div>

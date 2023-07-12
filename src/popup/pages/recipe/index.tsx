@@ -10,6 +10,7 @@ import styles from "./recipe.module.css";
 import Flex from "@/popup/components/flex";
 import TextArea from "@/popup/components/textarea";
 import Button from "@/popup/components/button";
+import SelectBox from "@/popup/components/selectbox";
 
 export default function Recipe() {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ export default function Recipe() {
               <TextField name="authenticity" label="authenticity"/>
             </Flex>
             <TextField name="stock" label="stock" size="full"/>
+            <SelectBox name="stock" label="stock" size="full"/>
             <Button label="Add Recipe" handler={() => alert("abc")}/>
           </Flex>
         </form>

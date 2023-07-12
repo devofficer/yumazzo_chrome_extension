@@ -19,6 +19,7 @@ export default function TextArea({
     <div className={styles.wrapper}>
       <label htmlFor={name}>{label}</label>
       <textarea 
+        id={name}
         name={name} 
         maxLength={maxLength} 
         placeholder={placeholder}
