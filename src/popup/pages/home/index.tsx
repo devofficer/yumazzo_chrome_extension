@@ -6,6 +6,7 @@ import styles from "./home.module.css";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Flex from "@/popup/components/flex";
 import Toolbar from "@/popup/components/toolbar";
+import Description from "@/popup/components/description";
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Toolbar/>
+      <Description difficulty="Medium" description="Spanish paella is a traditional rice dish that originated in the Valencia region of Spain. It was originally made with ingredients such as saffron, rabbit, and snails, which were common in the area." />
     </div>
   )
 }
