@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  background: transparent;
+  min-height: max-content;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+}
+
+.item {
+  background: white;
+  padding: 4px 8px;
+  color: black;
+}
