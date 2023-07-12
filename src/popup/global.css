@@ -16,6 +16,28 @@
   font-family: "Open Sans";
 }
 
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(120, 120, 120);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 body {
   color: #FFF;
   background-color: #0D1119;
@@ -86,14 +108,4 @@ textarea {
 
 .error {
   box-shadow: 0px 0px 0px 1px #FF003D !important;
-}
-
-/* animation */
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
 }

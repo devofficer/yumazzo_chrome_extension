@@ -2,7 +2,7 @@
   "name": "yumazzo",
   "version": "1.0.0",
   "description": "yumazzo chrome extension",
-  "author": "Yanko Yanichievich",
+  "author": "devofficer",
   "license": "MIT",
   "scripts": {
     "dev": "webpack --watch --progress --config config/webpack.dev.js",
