@@ -1,9 +1,13 @@
 import axios from 'axios';
 
+export const API = {
+  GET_RECIPES: '/yumazoo/recipes',
+};
+
 const baseApi = axios.create({
   withCredentials: true,
 });
 
-baseApi.interceptors.response.use((res) => res.data);
+baseApi.defaults.baseURL = 'https://master-7rqtwti-yj2le3kr2yhmu.uk-1.platformsh.site';
 
 export default baseApi;

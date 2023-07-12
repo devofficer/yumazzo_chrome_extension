@@ -1,21 +1,27 @@
-import { ROUTES } from "@/utils/constants/routes";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { ROUTES } from '@/utils/constants/routes';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import styles from "./splash.module.css";
+import styles from './splash.module.css';
+import useRecipes from '@/popup/store/useRecipes';
+import { statusCode } from '@/utils/constants/statusCode';
 
 export default function Splash() {
   const navigate = useNavigate();
+  const recipes = useRecipes();
 
   useEffect(() => {
-    setTimeout(() => {
-      navigate(ROUTES.home)
-    }, 100)
-  }, [])
+    (async () => {
+      const { status } = await recipes.loadAsync();
+      if(status === statusCode.SUCCESS)
+        navigate('/home');
+    })();
+  }, []);
 
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Yumazzo</h3>
+      <p className={styles.error}></p>
     </div>
-  )
+  );
 }
