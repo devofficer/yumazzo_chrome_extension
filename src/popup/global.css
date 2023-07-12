@@ -66,3 +66,12 @@ textarea {
 .app {
   width: 410px;
 }
+
+
+/* global class */
+.country-label {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Bai Jamjuree';
+  line-height: 17.5px;
+}
