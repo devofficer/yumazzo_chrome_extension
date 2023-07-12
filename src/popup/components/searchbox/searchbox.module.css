@@ -31,13 +31,14 @@
 
 .searchInput {
   flex: 1;
-  color: white;
-  outline: none;
-  border: none;
+  background-color: transparent;
+  box-shadow: none;
   border-radius: 0;
-  font-size: 16px;
-  font-weight: 400;
   line-height: 24px;
+}
+
+.searchInput:focus {
+  box-shadow: none;
 }
 
 .searchInput:focus {
