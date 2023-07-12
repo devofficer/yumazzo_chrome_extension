@@ -6,17 +6,22 @@ import SearchBox from '@/popup/components/searchbox';
 import Toolbar from '@/popup/components/toolbar';
 import useRecipes from '@/popup/store/useRecipes';
 import styles from './home.module.css';
+import { DIFFICULITY } from '@/utils/constants/difficulty';
 
 export default function Home() {
   const { activeRecipe } = useRecipes();
+  console.log(activeRecipe);
 
   return (
     <div className={styles.container}>
       <Flex dir="column" gap={24}>
         <SearchBox />
         <Toolbar recipe={activeRecipe} />
-        <Description difficulty="Medium" description="Spanish paella is a traditional rice dish that originated in the Valencia region of Spain. It was originally made with ingredients such as saffron, rabbit, and snails, which were common in the area." />
-        <Details />
+        <Description 
+          difficulty={activeRecipe.difficulty} 
+          description={activeRecipe.description} 
+        />
+        <Details recipe={activeRecipe}/>
       </Flex>
     </div>
   );

@@ -1,4 +1,4 @@
 export type DescriptionPropsType = {
-  difficulty: string;
+  difficulty: number;
   description: string;
 }
