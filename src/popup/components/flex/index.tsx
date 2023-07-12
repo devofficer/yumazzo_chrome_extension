@@ -1,6 +1,8 @@
 import React from "react";
 import { FlexPropsType } from "@/utils/types/flex";
 
+import styles from "./flex.module.css";
+
 export default function Flex({
   dir = "row", 
   justifyContent = "flex-start",
@@ -9,8 +11,8 @@ export default function Flex({
   children
 }:FlexPropsType) {
   return <div 
+    className={styles.container}
     style={{
-      display: "flex",
       gap: `${gap}px`,
       flexDirection: dir, 
       justifyContent: justifyContent,

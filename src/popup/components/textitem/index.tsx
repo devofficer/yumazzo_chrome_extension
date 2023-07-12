@@ -1,8 +1,8 @@
 import React from "react";
-
-import styles from "./label.module.css";
 import { TextItemPropsType } from "@/utils/types/textitem";
 import { classNames } from "@/utils/helpers/css";
+
+import styles from "./textitem.module.css";
 
 const labelTypes = {
   "normal": styles.normal,
