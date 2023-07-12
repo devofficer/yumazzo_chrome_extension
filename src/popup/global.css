@@ -83,3 +83,7 @@ textarea {
   font-family: 'Bai Jamjuree';
   line-height: 17.5px;
 }
+
+.error {
+  box-shadow: 0px 0px 0px 1px #FF003D !important;
+}
