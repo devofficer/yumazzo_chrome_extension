@@ -1,7 +1,7 @@
 .wrapper {
+  width: 100%;
   position: relative;
   background: transparent;
-  min-height: max-content;
 }
 
 .wrapper:focus-within .menu {
