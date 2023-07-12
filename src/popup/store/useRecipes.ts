@@ -9,7 +9,7 @@ interface RecipeSate {
   filteredRecipes: RecipeType[];
   activeRecipe: RecipeType;
   filter: (keyword: string) => void;
-  setActiveRecipe: (recipe: RecipeType) => void;
+  setActiveRecipe: (idx: number) => Promise<AxiosResponse>;
   addRecipe: (recipe: RecipeType) => Promise<AxiosResponse>;
   loadAsync: () => Promise<{status: number}>;
 }
@@ -35,15 +35,28 @@ const useRecipes = create<RecipeSate>((set) => {
     },
     filter: (keyword: string) => {
       set((state) => ({
-        filteredRecipes: state.recipes.filter(
+        filteredRecipes: state.recipes.map((recipe, idx) => {
+          return {...recipe, idx: idx};
+        }).filter(
           (recipe: RecipeType) => recipe.name.toUpperCase().includes(keyword.toUpperCase())
         )
       }));
     },
-    setActiveRecipe: (recipe: RecipeType) => {
-      set({
-        activeRecipe: recipe
-      });
+    setActiveRecipe: async (idx: number) => {
+      try {
+        set({loading: true});
+        const response = await baseApi.get(`${API.GET_RECIPES}/${idx}`);
+        if(response.status === 200) {
+          set({
+            activeRecipe: response.data.message
+          });
+        }
+        set({loading: false});
+        return response;
+      } catch (e) {
+        set({loading: false});
+        return e;
+      }
     },
     addRecipe: async (recipe: RecipeType) => {
       set({loading: true});
@@ -68,7 +81,9 @@ const useRecipes = create<RecipeSate>((set) => {
       const response = await baseApi.get(API.GET_RECIPES);
       set({
         recipes: response.data.message,
-        filteredRecipes: response.data.message,
+        filteredRecipes: response.data.message.map((recipe, idx) => {
+          return {...recipe, idx};
+        }),
         activeRecipe: response.data.message[2]
       });
       return {status: response.status};

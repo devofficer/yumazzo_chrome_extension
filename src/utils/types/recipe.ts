@@ -10,5 +10,6 @@ export type RecipeType = {
   volume: number,
   serves: number,
   authenticity: string,
-  stock: string
+  stock: string,
+  idx?: number,
 }
