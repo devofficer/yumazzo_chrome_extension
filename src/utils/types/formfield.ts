@@ -3,6 +3,7 @@ export type InputPropsType = {
   label: string;
   size?: string;
   unit?: string;
+  type?: string;
   placeholder?: string;
 }
 

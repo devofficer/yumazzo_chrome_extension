@@ -38,7 +38,7 @@ export default function Recipe() {
               placeholder="Describe your recipe..."
             />
             <Flex gap={10} justifyContent="space-between">
-              <SelectBox name="difficulty" label="difficulty" items={difficulties}/>
+              <SelectBox name="difficulty" label="difficulty" items={difficulties} type="number"/>
               <TextField name="protein" label="protein"/>
             </Flex>
             <Flex gap={10} justifyContent="space-between">
@@ -47,10 +47,10 @@ export default function Recipe() {
             </Flex>
             <Flex gap={10} justifyContent="space-between">
               <TextField name="cookingOil" label="Cooking Oil?"/>
-              <TextField name="volume" label="volume" unit="gram"/>
+              <TextField name="volume" label="volume" unit="gram" type="number"/>
             </Flex>
             <Flex gap={10} justifyContent="space-between">
-              <TextField name="serves" label="serves" unit="people"/>
+              <TextField name="serves" label="serves" unit="people" type="number"/>
               <SelectBox name="authenticity" label="authenticity" items={authenticities}/>
             </Flex>
             <TextField name="stock" label="stock" size="full"/>

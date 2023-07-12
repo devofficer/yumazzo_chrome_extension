@@ -11,7 +11,7 @@ const sizeStyles = {
   'full': styles.full
 };
 
-export default function SelectBox({name, label, size = 'half', items}: SelectBoxPropsType) {
+export default function SelectBox({name, label, size = 'half', type = 'text', items}: SelectBoxPropsType) {
   const inputRef = useRef(null);
   const [text, setText] = useState<string>('');
   const [value, setValue] = useState<string | number>('');
@@ -22,7 +22,7 @@ export default function SelectBox({name, label, size = 'half', items}: SelectBox
       <div className={styles.wrapper} onClick={() => {inputRef.current.focus();}}>
         <div className={styles.select}>
           <span className={styles.label}>{text}</span>
-          <input ref={inputRef} className={styles.input} type="text" readOnly name={name} value={value}/>
+          <input ref={inputRef} className={styles.input} type={type} readOnly name={name} value={value}/>
           <FontAwesomeIcon icon={faChevronDown}/>
         </div>
         <div className={styles.menu}>
